@@ -7,12 +7,14 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class ServiseService {
+  deleteData(id: number) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
 
   getData() {
     return this.http
       .get<ITodo[]>('https://jsonplaceholder.typicode.com/todos')
-      .pipe(map((res) => res.map((item) => item.title)));
-    // .pipe(map((res) => res.map((item) => new Todo(item))));
+      .pipe(map((res) => res.map((item) => new Todo(item))));
   }
 }

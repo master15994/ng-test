@@ -1,1 +1,42 @@
-<p>{{data |json}}</p>
+<table tuiTable [columns]="columns">
+    <button (click)="delete(item.id)">Delete</button>
+    <thead>
+        <th>
+            Id
+        </th>
+        <th>
+            UserId
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Completed
+        </th>
+
+    </thead>
+
+    <tbody *ngFor="let item of data">
+        <tr>
+            <td>
+                {{ item.id }}
+            </td>
+            <td>
+                {{ item.userId }}
+            </td>
+            <td>
+                {{ item.title }}
+            </td>
+
+            <td>
+                {{item.completed}}
+            </td>
+            <td *tuiCell="'actions'" tuiTd>
+                <button tuiIconButton appearance="flat" size="s" icon="tuiIconTrash" title="Remove" shape="rounded"
+                    type="button" class="remove" (click)="(item)"></button>
+            </td>
+        </tr>
+    </tbody>
+
+
+</table>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
 import { ServiseService } from './servise.service';
 import { Todo } from './todo';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,12 @@ import { Todo } from './todo';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  data: string[] = [];
+  data: Todo[] = [];
+
+  readonly columns = ['id', 'userId', 'title', 'completed', 'actions'];
+
+  testValue = new FormControl(true);
+  item: any;
 
   constructor(private service: ServiseService) {}
 
@@ -18,5 +23,9 @@ export class AppComponent implements OnInit {
     this.service.getData().subscribe((res) => {
       this.data = res;
     });
+  }
+
+  delete(id: number) {
+    this.service.deleteData(id);
   }
 }
