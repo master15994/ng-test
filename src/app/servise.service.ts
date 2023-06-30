@@ -7,9 +7,7 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class ServiseService {
-  deleteData(id: number) {
-    throw new Error('Method not implemented.');
-  }
+  deleteData(id: number) {}
   constructor(private http: HttpClient) {}
 
   getData() {

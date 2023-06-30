@@ -26,6 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.service.deleteData(id);
+    this.data = this.data.filter((obj) => obj.id !== id);
   }
 }
